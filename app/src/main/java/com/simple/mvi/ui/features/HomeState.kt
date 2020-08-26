@@ -6,9 +6,8 @@ import com.simple.mvi.ui.common.ViewState
 /**
  * Created by Rim Gazzah on 8/26/20.
  **/
-data class HomeState(
-    val isProcessing: Boolean = true,
-    val listCharacter: List<Persona> = emptyList(),
-    val searchMode: String,
-    val error: String
-) : ViewState
+sealed class HomeState : ViewState{
+    object Loading : HomeState()
+    data class Result(val data : List<Persona>, val isSearchMode :Boolean): HomeState()
+    data class Exception(val message: String) : HomeState()
+}
