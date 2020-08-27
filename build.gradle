@@ -27,6 +27,7 @@ buildscript {
                 'retrofit'             : '2.9.0',
                 'stetho'               : '1.5.1',
                 'kotlinx_serialization': '1.0.0-RC',
+                'coil': '0.11.0',
         ]
         deps = [
                 'androidx' : [
@@ -53,7 +54,8 @@ buildscript {
                         retrofit      : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
                         converter_gson: "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
                 ],
-                'stetho'   : "com.facebook.stetho:stetho-okhttp3:${versions.stetho}"
+                'stetho'   : "com.facebook.stetho:stetho-okhttp3:${versions.stetho}",
+                'coil' :"io.coil-kt:coil:${versions.coil}"
         ]
 
 

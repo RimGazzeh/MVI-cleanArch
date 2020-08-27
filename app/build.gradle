@@ -42,6 +42,7 @@ dependencies {
     implementation deps.androidx.recyclerview
     implementation deps.androidx.cardview
     implementation deps.androidx.viewModel
+    implementation deps.coil
     implementation deps.androidx.liveData
     implementation deps.dagger.common
     implementation deps.squareup.retrofit

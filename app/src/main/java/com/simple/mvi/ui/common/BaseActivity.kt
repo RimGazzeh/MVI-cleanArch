@@ -15,12 +15,10 @@ abstract class BaseActivity<STATE : ViewState ,  VM : ViewModel> : AppCompatActi
         super.onCreate(savedInstanceState, persistentState)
         setContentView(getLayoutResId())
         initView()
-        initData()
     }
 
     @LayoutRes
     abstract fun getLayoutResId(): Int
 
     abstract fun initView()
-    abstract fun initData()
 }

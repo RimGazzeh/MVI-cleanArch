@@ -7,15 +7,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : BaseActivity<HomeState, HomeViewModel>() {
 
-
+    private val mAdapter  = CharactersAdapter()
     override fun getLayoutResId(): Int {
         return R.layout.activity_main
     }
 
     override fun initView() {
-    }
-
-    override fun initData() {
+        home_list.adapter = mAdapter
+        render(HomeState.Loading)
     }
 
     override fun render(state: HomeState) {
@@ -25,6 +24,7 @@ class HomeActivity : BaseActivity<HomeState, HomeViewModel>() {
 
         when (state){
             is HomeState.Result -> {
+                mAdapter.updateList(state.data)
             }
             is HomeState.Exception -> {
                 home_message.text = state.message
