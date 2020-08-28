@@ -13,16 +13,32 @@ import kotlinx.coroutines.flow.flow
 /**
  * Created by Rim Gazzah on 8/28/20.
  **/
-class CharactersManagerImpl(private val api:ApiService): CharactersManager {
-    override fun getAllCharacters(): Flow<Result<List<Persona>>>  = flow {
+class CharactersManagerImpl(private val api: ApiService) : CharactersManager {
+    override fun getAllCharacters(): Flow<Result<List<Persona>>> = flow {
         api.getAllCharacters().run {
-            if (this.isSuccessful){
-                if(this.body().isNullOrEmpty()){
+            if (this.isSuccessful) {
+                if (this.body().isNullOrEmpty()) {
                     emit(Result.Error(CallErrors.ErrorEmptyData))
-                }else{
+                } else {
                     emit(Result.Success(this.body()!!.toModel()))
                 }
-            }else{
+            } else {
+                emit(Result.Error(CallErrors.ErrorServer))
+            }
+        }
+    }.applyCommonSideEffects().catch {
+        emit(Result.Error(CallErrors.ErrorException(it)))
+    }
+
+    override fun searchCharacters(name: String): Flow<Result<List<Persona>>> = flow {
+        api.searchCharacterByName(name).run {
+            if (this.isSuccessful) {
+                if (this.body().isNullOrEmpty()) {
+                    emit(Result.Error(CallErrors.ErrorEmptyData))
+                } else {
+                    emit(Result.Success(this.body()!!.toModel()))
+                }
+            } else {
                 emit(Result.Error(CallErrors.ErrorServer))
             }
         }
@@ -30,3 +46,5 @@ class CharactersManagerImpl(private val api:ApiService): CharactersManager {
         emit(Result.Error(CallErrors.ErrorException(it)))
     }
 }
+
+//TODO : GET RESPONSE GENERIC FUNCTION

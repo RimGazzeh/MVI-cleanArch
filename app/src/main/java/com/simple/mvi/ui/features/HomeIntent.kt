@@ -7,6 +7,6 @@ import com.simple.mvi.ui.common.ViewIntent
  **/
 sealed class HomeIntent : ViewIntent {
     object LoadAllCharacters : HomeIntent()
-    sealed class SearchCharacter(name: String) : HomeIntent()
+    data class SearchCharacter(val name: String) : HomeIntent()
     object ClearSearch : HomeIntent()
 }

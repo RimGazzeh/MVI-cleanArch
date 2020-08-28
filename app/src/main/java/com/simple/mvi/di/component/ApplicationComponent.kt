@@ -1,6 +1,7 @@
 package com.simple.mvi.di.component
 
-import com.simple.data.DataManager
+import com.simple.data.ApiService
+import com.simple.data.managers.CharactersManager
 import com.simple.mvi.MVIApplication
 import com.simple.mvi.di.module.ApplicationModule
 import com.simple.mvi.di.module.NetworkModule
@@ -24,6 +25,5 @@ interface ApplicationComponent {
         fun application(app: MVIApplication): Builder
     }
 
-  //  fun provideDaggerViewModelFactory(): DaggerViewModelFactory
-    fun provideDataManager(): DataManager
+ //  fun provideDaggerViewModelFactory(): DaggerViewModelFactory
 }

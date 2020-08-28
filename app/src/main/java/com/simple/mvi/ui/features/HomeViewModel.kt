@@ -1,17 +1,31 @@
 package com.simple.mvi.ui.features
 
-import androidx.lifecycle.LiveData
+import com.simple.data.managers.CharactersManager
 import com.simple.mvi.ui.common.BaseViewModel
+import javax.inject.Inject
 
 /**
  * Created by Rim Gazzah on 8/26/20.
  **/
-class HomeViewModel(override val state: LiveData<HomeState>) : BaseViewModel<HomeIntent, HomeAction, HomeState>(){
+class HomeViewModel @Inject constructor(private val dataManager: CharactersManager) :
+    BaseViewModel<HomeIntent, HomeAction, HomeState>() {
     override fun intentToAction(intent: HomeIntent): HomeAction {
-        TODO("Not yet implemented")
+        return when (intent) {
+            is HomeIntent.LoadAllCharacters -> HomeAction.AllCharacters
+            is HomeIntent.ClearSearch -> HomeAction.AllCharacters
+            is HomeIntent.SearchCharacter -> HomeAction.SearchCharacters(intent.name)
+        }
+
     }
 
     override fun handleAction(action: HomeAction) {
-        TODO("Not yet implemented")
+        when (action) {
+            is HomeAction.AllCharacters -> {
+                dataManager.getAllCharacters()
+            }
+            is HomeAction.SearchCharacters -> {
+                dataManager.searchCharacters(action.name)
+            }
+        }
     }
 }

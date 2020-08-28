@@ -2,7 +2,8 @@ package com.simple.mvi.di.module
 
 import android.content.Context
 import com.simple.data.ApiService
-import com.simple.data.DataManager
+import com.simple.data.managers.CharactersManager
+import com.simple.data.managers.CharactersManagerImpl
 import com.simple.mvi.MVIApplication
 import dagger.Module
 import dagger.Provides
@@ -19,7 +20,7 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideDataManagerAccessor(): DataManager {
-        return DataManager()
+    fun provideDataManagerAccessor(apiService: ApiService): CharactersManager{
+        return CharactersManagerImpl(apiService)
     }
 }

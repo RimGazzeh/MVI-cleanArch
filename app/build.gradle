@@ -39,7 +39,7 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    api project(appModules.data)
+    implementation project(appModules.data)
     implementation deps.androidx.constraintlayout
     implementation deps.androidx.recyclerview
     implementation deps.androidx.cardview
