@@ -9,16 +9,16 @@ import androidx.lifecycle.ViewModel
 /**
  * Created by Rim Gazzah on 8/19/20.
  **/
-abstract class BaseActivity<STATE : ViewState ,  VM : ViewModel> : AppCompatActivity(), IViewRenderer<STATE> {
+abstract class BaseActivity<STATE : ViewState ,  VM : ViewModel> : RootBaseActivity(), IViewRenderer<STATE> {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         setContentView(getLayoutResId())
-        initView()
+        initState()
     }
 
     @LayoutRes
     abstract fun getLayoutResId(): Int
 
-    abstract fun initView()
+    abstract fun initState()
 }

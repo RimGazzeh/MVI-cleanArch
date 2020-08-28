@@ -12,7 +12,7 @@ class HomeActivity : BaseActivity<HomeState, HomeViewModel>() {
         return R.layout.activity_main
     }
 
-    override fun initView() {
+    override fun initState() {
         home_list.adapter = mAdapter
         render(HomeState.Loading)
     }

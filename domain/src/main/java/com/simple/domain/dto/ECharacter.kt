@@ -20,4 +20,5 @@ data class ECharacter(
 )
 
 fun ECharacter.toModel() = Persona(id, name, species, status, gender, image)
+fun List<ECharacter>.toModel() = map { it.toModel() }
 

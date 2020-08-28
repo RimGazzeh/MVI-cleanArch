@@ -4,6 +4,8 @@ import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
 import com.simple.data.ApiService
+import com.simple.mvi.BuildConfig
+import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -15,6 +17,7 @@ import javax.inject.Singleton
 /**
  * Created by Rim Gazzah on 8/19/20.
  **/
+@Module
 class NetworkModule {
 
     @Provides
@@ -43,7 +46,7 @@ class NetworkModule {
         okHttpClient: OkHttpClient
     ): Retrofit {
         val gsonBuilder = GsonBuilder()
-        return Retrofit.Builder().baseUrl("")
+        return Retrofit.Builder().baseUrl(BuildConfig.API_BASE_URL)
             .addConverterFactory((GsonConverterFactory.create(gsonBuilder.create())))
             .client(okHttpClient)
             .build()
