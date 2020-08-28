@@ -26,14 +26,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(appModules.domain)
-    implementation deps.jetbrains.stdlib
+    api project(appModules.domain)
+    api deps.jetbrains.stdlib
     implementation deps.jetbrains.kotlinx_serialization
-    implementation deps.androidx.core_ktx
-    implementation deps.androidx.appcompat
-    implementation deps.squareup.retrofit
-    implementation deps.jetbrains.coroutines_core
-    implementation deps.jetbrains.coroutines_android
+    api deps.androidx.core_ktx
+    api deps.androidx.appcompat
+    api deps.squareup.retrofit
+    api deps.jetbrains.coroutines_core
+    api deps.jetbrains.coroutines_android
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

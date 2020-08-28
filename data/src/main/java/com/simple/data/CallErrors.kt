@@ -1,6 +1,5 @@
 package com.simple.data
 
-import java.lang.Exception
 
 /**
  * Created by Rim Gazzah on 8/28/20.
