@@ -1,4 +1,4 @@
-package com.simple.mvi.ui.features
+package com.simple.mvi.ui.features.machine
 
 import com.simple.mvi.ui.common.ViewAction
 

@@ -1,8 +1,10 @@
 package com.simple.mvi.ui.common
 
+import com.simple.data.common.Result
+
 /**
  * Created by Rim Gazzah on 8/26/20.
  **/
-interface IReducer<STATE, PARTIAL_STATE> {
-    fun reduce(state: STATE, partialState: PARTIAL_STATE): STATE
+interface IReducer<STATE, T :Any> {
+    fun reduce(result: Result<T>, state: STATE,): STATE
 }

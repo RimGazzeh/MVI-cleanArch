@@ -2,6 +2,11 @@ package com.simple.mvi.ui.features
 
 import com.simple.data.managers.CharactersManager
 import com.simple.mvi.ui.common.BaseViewModel
+import com.simple.mvi.ui.features.machine.HomeAction
+import com.simple.mvi.ui.features.machine.HomeIntent
+import com.simple.mvi.ui.features.machine.HomeState
+import com.simple.mvi.ui.features.machine.reduce
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 /**
@@ -15,16 +20,22 @@ class HomeViewModel @Inject constructor(private val dataManager: CharactersManag
             is HomeIntent.ClearSearch -> HomeAction.AllCharacters
             is HomeIntent.SearchCharacter -> HomeAction.SearchCharacters(intent.name)
         }
-
     }
 
+
     override fun handleAction(action: HomeAction) {
-        when (action) {
-            is HomeAction.AllCharacters -> {
-                dataManager.getAllCharacters()
-            }
-            is HomeAction.SearchCharacters -> {
-                dataManager.searchCharacters(action.name)
+        launchOnUI {
+            when (action) {
+                is HomeAction.AllCharacters -> {
+                    dataManager.getAllCharacters().collect {
+                        mState.postValue(it.reduce())
+                    }
+                }
+                is HomeAction.SearchCharacters -> {
+                    dataManager.searchCharacters(action.name).collect {
+                        mState.postValue(it.reduce())
+                    }
+                }
             }
         }
     }

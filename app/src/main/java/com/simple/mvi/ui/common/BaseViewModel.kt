@@ -14,10 +14,10 @@ abstract class BaseViewModel<INTENT : ViewIntent, ACTION : ViewAction, STATE : V
     ViewModel(),
     IModel<STATE, INTENT> {
 
-    private val _state = MutableLiveData<STATE>()
+    protected val mState = MutableLiveData<STATE>()
     override val state: LiveData<STATE>
         get() {
-            return _state
+            return mState
         }
 
     fun launchOnUI(block: suspend CoroutineScope.() -> Unit) {

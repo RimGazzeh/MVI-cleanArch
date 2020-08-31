@@ -3,6 +3,7 @@ package com.simple.mvi.ui.features
 import androidx.core.view.isVisible
 import com.simple.mvi.R
 import com.simple.mvi.ui.common.BaseActivity
+import com.simple.mvi.ui.features.machine.HomeState
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : BaseActivity<HomeState, HomeViewModel>() {
@@ -27,7 +28,6 @@ class HomeActivity : BaseActivity<HomeState, HomeViewModel>() {
                 mAdapter.updateList(state.data)
             }
             is HomeState.Exception -> {
-                home_message.text = state.message
             }
         }
     }
