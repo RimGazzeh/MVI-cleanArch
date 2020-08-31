@@ -1,6 +1,9 @@
 package com.simple.mvi.di.module
 
 import android.content.Context
+import com.simple.data.ApiService
+import com.simple.data.managers.CharactersManager
+import com.simple.data.managers.CharactersManagerImpl
 import com.simple.mvi.di.common.AppRouter
 import com.simple.mvi.ui.common.RootBaseActivity
 import dagger.Module
@@ -21,4 +24,9 @@ class ActivityModule constructor(private val activity : RootBaseActivity) {
 
     @Provides
     fun providesRouterComponent() : AppRouter = AppRouter(activity)
+
+    @Provides
+    fun providesCharactersManager(apiService: ApiService): CharactersManager{
+        return CharactersManagerImpl(apiService)
+    }
 }
