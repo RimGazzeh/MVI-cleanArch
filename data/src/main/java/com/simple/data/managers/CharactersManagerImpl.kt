@@ -17,10 +17,10 @@ class CharactersManagerImpl(private val api: ApiService) : CharactersManager {
     override fun getAllCharacters(): Flow<Result<List<Persona>>> = flow {
         api.getAllCharacters().run {
             if (this.isSuccessful) {
-                if (this.body().isNullOrEmpty()) {
+                if (this.body() == null) {
                     emit(Result.Error(CallErrors.ErrorEmptyData))
                 } else {
-                    emit(Result.Success(this.body()!!.toModel()))
+                    emit(Result.Success(this.body()!!.results.toModel()))
                 }
             } else {
                 emit(Result.Error(CallErrors.ErrorServer))
@@ -33,10 +33,10 @@ class CharactersManagerImpl(private val api: ApiService) : CharactersManager {
     override fun searchCharacters(name: String): Flow<Result<List<Persona>>> = flow {
         api.searchCharacterByName(name).run {
             if (this.isSuccessful) {
-                if (this.body().isNullOrEmpty()) {
+                if (this.body() == null ) {
                     emit(Result.Error(CallErrors.ErrorEmptyData))
                 } else {
-                    emit(Result.Success(this.body()!!.toModel()))
+                    emit(Result.Success(this.body()!!.results.toModel()))
                 }
             } else {
                 emit(Result.Error(CallErrors.ErrorServer))

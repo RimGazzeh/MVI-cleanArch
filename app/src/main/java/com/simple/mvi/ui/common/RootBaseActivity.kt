@@ -2,6 +2,7 @@ package com.simple.mvi.ui.common
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.simple.mvi.MVIApplication
 import com.simple.mvi.di.common.AppRouter
 import com.simple.mvi.di.component.ActivityComponent
 import com.simple.mvi.di.component.DaggerActivityComponent
@@ -15,7 +16,8 @@ import javax.inject.Inject
 open class RootBaseActivity : AppCompatActivity() {
 
     private val activityComponent: ActivityComponent by lazy {
-        DaggerActivityComponent.builder().activityModule(ActivityModule(this)).build()
+        DaggerActivityComponent.builder().activityModule(ActivityModule(this))
+            .applicationComponent(MVIApplication.appComponents).build()
     }
 
     @Inject
@@ -25,8 +27,9 @@ open class RootBaseActivity : AppCompatActivity() {
     lateinit var viewModelFactory: DaggerViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         activityComponent.inject(this)
+        super.onCreate(savedInstanceState)
     }
+
 
 }

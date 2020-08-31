@@ -14,9 +14,8 @@ import javax.inject.Singleton
  **/
 @Module
 class ApplicationModule {
-
     @Provides
-    fun provideApplication(application : MVIApplication) : Context = application.applicationContext
+    fun provideApplicationContext(application : MVIApplication) : Context = application.applicationContext
 
     @Provides
     @Singleton

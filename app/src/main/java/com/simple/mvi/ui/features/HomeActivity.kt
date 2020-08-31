@@ -1,21 +1,27 @@
 package com.simple.mvi.ui.features
 
+import android.util.Log
 import androidx.core.view.isVisible
 import com.simple.mvi.R
 import com.simple.mvi.ui.common.BaseActivity
+import com.simple.mvi.ui.features.machine.HomeAction
+import com.simple.mvi.ui.features.machine.HomeIntent
 import com.simple.mvi.ui.features.machine.HomeState
 import kotlinx.android.synthetic.main.activity_main.*
 
-class HomeActivity : BaseActivity<HomeState, HomeViewModel>() {
+class HomeActivity : BaseActivity<HomeIntent, HomeAction, HomeState, HomeViewModel>(HomeViewModel::class.java) {
 
     private val mAdapter  = CharactersAdapter()
     override fun getLayoutResId(): Int {
         return R.layout.activity_main
     }
 
-    override fun initState() {
+    override fun initUI() {
         home_list.adapter = mAdapter
-        render(HomeState.Loading)
+    }
+
+    override fun initDATA() {
+        dispatchIntent(HomeIntent.LoadAllCharacters)
     }
 
     override fun render(state: HomeState) {
@@ -28,6 +34,7 @@ class HomeActivity : BaseActivity<HomeState, HomeViewModel>() {
                 mAdapter.updateList(state.data)
             }
             is HomeState.Exception -> {
+                home_message.text = state.callErrors.getMessage()
             }
         }
     }
