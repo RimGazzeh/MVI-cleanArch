@@ -1,4 +1,4 @@
-package com.simple.mvi.ui.features
+package com.simple.mvi.features.home.ui
 
 import android.view.LayoutInflater
 import android.view.View

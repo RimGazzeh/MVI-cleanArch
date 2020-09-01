@@ -1,4 +1,4 @@
-package com.simple.mvi.ui.common
+package com.simple.mvi.common
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

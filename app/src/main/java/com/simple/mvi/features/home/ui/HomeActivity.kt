@@ -1,12 +1,12 @@
-package com.simple.mvi.ui.features
+package com.simple.mvi.features.home.ui
 
-import android.util.Log
 import androidx.core.view.isVisible
 import com.simple.mvi.R
-import com.simple.mvi.ui.common.BaseActivity
-import com.simple.mvi.ui.features.machine.HomeAction
-import com.simple.mvi.ui.features.machine.HomeIntent
-import com.simple.mvi.ui.features.machine.HomeState
+import com.simple.mvi.common.BaseActivity
+import com.simple.mvi.features.home.HomeViewModel
+import com.simple.mvi.features.home.HomeAction
+import com.simple.mvi.features.home.HomeIntent
+import com.simple.mvi.features.home.HomeState
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : BaseActivity<HomeIntent, HomeAction, HomeState, HomeViewModel>(HomeViewModel::class.java) {

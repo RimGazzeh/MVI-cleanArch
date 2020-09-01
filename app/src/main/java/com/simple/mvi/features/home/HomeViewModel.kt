@@ -1,11 +1,11 @@
-package com.simple.mvi.ui.features
+package com.simple.mvi.features.home
 
 import com.simple.data.managers.CharactersManager
-import com.simple.mvi.ui.common.BaseViewModel
-import com.simple.mvi.ui.features.machine.HomeAction
-import com.simple.mvi.ui.features.machine.HomeIntent
-import com.simple.mvi.ui.features.machine.HomeState
-import com.simple.mvi.ui.features.machine.reduce
+import com.simple.mvi.common.BaseViewModel
+import com.simple.mvi.features.home.HomeAction
+import com.simple.mvi.features.home.HomeIntent
+import com.simple.mvi.features.home.HomeState
+import com.simple.mvi.features.home.reduce
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 

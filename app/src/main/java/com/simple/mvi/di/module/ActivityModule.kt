@@ -5,7 +5,7 @@ import com.simple.data.ApiService
 import com.simple.data.managers.CharactersManager
 import com.simple.data.managers.CharactersManagerImpl
 import com.simple.mvi.di.common.AppRouter
-import com.simple.mvi.ui.common.RootBaseActivity
+import com.simple.mvi.common.RootBaseActivity
 import dagger.Module
 import dagger.Provides
 

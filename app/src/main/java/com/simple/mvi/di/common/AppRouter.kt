@@ -1,7 +1,7 @@
 package com.simple.mvi.di.common
 
 import com.simple.mvi.di.annotations.ActivityScope
-import com.simple.mvi.ui.common.RootBaseActivity
+import com.simple.mvi.common.RootBaseActivity
 import javax.inject.Inject
 
 /**

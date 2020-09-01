@@ -1,6 +1,6 @@
-package com.simple.mvi.ui.features.machine
+package com.simple.mvi.features.home
 
-import com.simple.mvi.ui.common.ViewAction
+import com.simple.mvi.common.ViewAction
 
 /**
  * Created by Rim Gazzah on 8/26/20.

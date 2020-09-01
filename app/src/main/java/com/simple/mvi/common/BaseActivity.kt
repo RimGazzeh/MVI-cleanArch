@@ -1,8 +1,7 @@
-package com.simple.mvi.ui.common
+package com.simple.mvi.common
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
-import androidx.lifecycle.Observer
 import com.simple.data.CallErrors
 import com.simple.mvi.R
 

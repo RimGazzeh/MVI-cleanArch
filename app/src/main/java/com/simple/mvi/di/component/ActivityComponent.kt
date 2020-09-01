@@ -3,7 +3,7 @@ package com.simple.mvi.di.component
 import com.simple.mvi.di.annotations.ActivityScope
 import com.simple.mvi.di.common.AppRouter
 import com.simple.mvi.di.module.ActivityModule
-import com.simple.mvi.ui.common.RootBaseActivity
+import com.simple.mvi.common.RootBaseActivity
 import dagger.Component
 
 /**

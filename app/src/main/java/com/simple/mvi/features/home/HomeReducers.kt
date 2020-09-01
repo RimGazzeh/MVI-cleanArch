@@ -1,4 +1,4 @@
-package com.simple.mvi.ui.features.machine
+package com.simple.mvi.features.home
 
 import com.simple.data.common.Result
 import com.simple.domain.entities.Persona

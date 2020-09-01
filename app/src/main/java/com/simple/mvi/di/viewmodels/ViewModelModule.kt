@@ -4,7 +4,7 @@ package com.simple.mvi.di.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.simple.mvi.di.annotations.ViewModelKey
-import com.simple.mvi.ui.features.HomeViewModel
+import com.simple.mvi.features.home.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
