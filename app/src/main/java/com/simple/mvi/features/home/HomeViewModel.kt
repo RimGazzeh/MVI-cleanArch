@@ -33,7 +33,7 @@ class HomeViewModel @Inject constructor(private val dataManager: CharactersManag
                 }
                 is HomeAction.SearchCharacters -> {
                     dataManager.searchCharacters(action.name).collect {
-                        mState.postValue(it.reduce())
+                        mState.postValue(it.reduce(true))
                     }
                 }
             }

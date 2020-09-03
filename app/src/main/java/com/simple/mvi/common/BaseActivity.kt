@@ -25,6 +25,7 @@ abstract class BaseActivity<INTENT : ViewIntent, ACTION : ViewAction, STATE : Vi
         initUI()
         viewModel.state.observe(this, { render(it) })
         initDATA()
+        initEVENT()
     }
 
 
@@ -32,6 +33,7 @@ abstract class BaseActivity<INTENT : ViewIntent, ACTION : ViewAction, STATE : Vi
     abstract fun getLayoutResId(): Int
     abstract fun initUI()
     abstract fun initDATA()
+    abstract fun initEVENT()
     fun dispatchIntent(intent: INTENT){
         viewModel.dispatchIntent(intent)
     }
