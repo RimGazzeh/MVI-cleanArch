@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">@color/blue_bayou</color>
+    <color name="colorPrimaryDark">@color/blue_oxford</color>
+    <color name="colorAccent">@color/orange_sea_buckthorn</color>
+    <color name="orange_sea_buckthorn">#F9AA33</color>
+    <color name="blue_bayou">#4A6572</color>
+    <color name="blue_oxford">#344955</color>
+    <color name="blue_outer_space">#232F34</color>
 </resources>

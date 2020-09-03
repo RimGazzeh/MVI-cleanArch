@@ -17,7 +17,7 @@ class HomeActivity : BaseActivity<HomeIntent, HomeAction, HomeState, HomeViewMod
     }
 
     override fun initUI() {
-        home_list.adapter = mAdapter
+        homeListCharacters.adapter = mAdapter
     }
 
     override fun initDATA() {
@@ -25,16 +25,16 @@ class HomeActivity : BaseActivity<HomeIntent, HomeAction, HomeState, HomeViewMod
     }
 
     override fun render(state: HomeState) {
-        home_progress.isVisible = state is HomeState.Loading
-        home_message.isVisible = state is HomeState.Exception
-        home_list.isVisible = state is HomeState.Result
+        homeProgress.isVisible = state is HomeState.Loading
+        homeMessage.isVisible = state is HomeState.Exception
+        homeListCharacters.isVisible = state is HomeState.Result
 
         when (state){
             is HomeState.Result -> {
                 mAdapter.updateList(state.data)
             }
             is HomeState.Exception -> {
-                home_message.text = state.callErrors.getMessage()
+                homeMessage.text = state.callErrors.getMessage()
             }
         }
     }
