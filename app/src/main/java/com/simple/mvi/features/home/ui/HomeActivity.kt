@@ -15,7 +15,6 @@ class HomeActivity :
     BaseActivity<HomeIntent, HomeAction, HomeState, HomeViewModel>(HomeViewModel::class.java) {
 
     private val mAdapter = CharactersAdapter()
-    private lateinit var mState: HomeState
     override fun getLayoutResId(): Int {
         return R.layout.activity_main
     }
@@ -36,8 +35,7 @@ class HomeActivity :
         }
         homeSearchText.doOnTextChanged { text, _, _, _ ->
             text.isNullOrBlank()
-                .and(mState is HomeState.Result)
-                .and((mState as HomeState.Result).isSearchMode)
+                .and(mState is HomeState.ResultSearch)
                 .runIfTrue {
                     dispatchIntent(HomeIntent.ClearSearch)
                 }
@@ -45,14 +43,18 @@ class HomeActivity :
     }
 
     override fun render(state: HomeState) {
-        mState = state
         homeProgress.isVisible = state is HomeState.Loading
         homeMessage.isVisible = state is HomeState.Exception
-        homeListCharacters.isVisible = state is HomeState.Result
+        homeListCharacters.isVisible =
+            state is HomeState.ResultSearch || state is HomeState.ResultAllPersona
 
         when (state) {
-            is HomeState.Result -> {
+            is HomeState.ResultAllPersona -> {
                 mAdapter.updateList(state.data)
+            }
+            is HomeState.ResultSearch -> {
+                mAdapter.updateList(state.data)
+                // other logic ...
             }
             is HomeState.Exception -> {
                 homeMessage.text = state.callErrors.getMessage()

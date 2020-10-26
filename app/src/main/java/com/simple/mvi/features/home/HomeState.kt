@@ -9,6 +9,7 @@ import com.simple.mvi.common.ViewState
  **/
 sealed class HomeState : ViewState{
     object Loading : HomeState()
-    data class Result(val data : List<Persona>, val isSearchMode :Boolean = false): HomeState()
+    data class ResultAllPersona(val data : List<Persona>): HomeState()
+    data class ResultSearch(val data : List<Persona>): HomeState()
     data class Exception(val callErrors: CallErrors) : HomeState()
 }
