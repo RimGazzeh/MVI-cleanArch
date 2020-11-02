@@ -2,6 +2,9 @@
 An Implementation of the MVI Android architecture </br>
 Used as API [rickandmortyapi](https://rickandmortyapi.com/) 
 
+Code Structure
+---------------
+![Diagramme package](https://user-images.githubusercontent.com/16986563/97868124-72a40980-1d0f-11eb-9002-91e12f4caa4d.png)
 
 Used Libs 
 ---------------
@@ -12,10 +15,6 @@ Used Libs
 * [Retrofit2](https://square.github.io/retrofit/) 
 * [steto](http://facebook.github.io/stetho/) 
 * [coil](https://coil-kt.github.io/coil/) 
-
-Code Structure
----------------
-![Diagramme package](https://user-images.githubusercontent.com/16986563/97868124-72a40980-1d0f-11eb-9002-91e12f4caa4d.png)
 
 Screenshot
 ---------------
