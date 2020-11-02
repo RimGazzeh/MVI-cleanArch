@@ -1,4 +1,4 @@
-package com.simple.data
+package com.simple.data.common
 
 /**
  * Created by Rim Gazzah on 8/27/20.

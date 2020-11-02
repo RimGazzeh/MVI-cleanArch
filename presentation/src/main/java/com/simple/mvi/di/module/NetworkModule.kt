@@ -3,7 +3,7 @@ package com.simple.mvi.di.module
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
-import com.simple.data.ApiService
+import com.simple.data.services.ApiService
 import com.simple.mvi.BuildConfig
 import dagger.Module
 import dagger.Provides

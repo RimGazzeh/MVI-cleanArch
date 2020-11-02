@@ -1,7 +1,5 @@
 package com.simple.data.common
 
-import com.simple.data.CallErrors
-
 /**
  * Created by Rim Gazzah on 8/28/20.
  **/

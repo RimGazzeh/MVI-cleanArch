@@ -2,9 +2,6 @@ package com.simple.mvi.common
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
-import com.simple.data.CallErrors
-import com.simple.mvi.R
-import com.simple.mvi.features.home.HomeState
 
 /**
  * Created by Rim Gazzah on 8/19/20.
@@ -42,16 +39,5 @@ abstract class BaseActivity<INTENT : ViewIntent, ACTION : ViewAction, STATE : Vi
     abstract fun initEVENT()
     fun dispatchIntent(intent: INTENT) {
         viewModel.dispatchIntent(intent)
-    }
-
-    fun CallErrors.getMessage(): String {
-        return when (this) {
-            is CallErrors.ErrorEmptyData -> getString(R.string.error_empty_data)
-            is CallErrors.ErrorServer -> getString(R.string.error_server_error)
-            is CallErrors.ErrorException -> if (throwable.message != null) throwable.message!! else getString(
-                R.string.error_exception
-            )
-        }
-
     }
 }

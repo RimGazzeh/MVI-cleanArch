@@ -4,6 +4,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import com.simple.mvi.R
 import com.simple.mvi.common.BaseActivity
+import com.simple.mvi.common.getMessage
 import com.simple.mvi.common.runIfTrue
 import com.simple.mvi.features.home.HomeViewModel
 import com.simple.mvi.features.home.HomeAction
@@ -57,7 +58,7 @@ class HomeActivity :
                 // other logic ...
             }
             is HomeState.Exception -> {
-                homeMessage.text = state.callErrors.getMessage()
+                homeMessage.text = state.callErrors.getMessage(this)
             }
         }
     }

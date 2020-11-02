@@ -1,6 +1,6 @@
 package com.simple.mvi.features.home
 
-import com.simple.data.CallErrors
+import com.simple.data.common.CallErrors
 import com.simple.domain.entities.Persona
 import com.simple.mvi.common.ViewState
 

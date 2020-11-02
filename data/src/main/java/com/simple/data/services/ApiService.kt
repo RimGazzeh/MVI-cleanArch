@@ -1,6 +1,7 @@
-package com.simple.data
+package com.simple.data.services
 
-import com.simple.domain.dto.ECharacter
+import com.simple.data.common.KEY_NAME
+import com.simple.data.common.PATH_CHARACTER
 import com.simple.domain.dto.ECharacters
 import retrofit2.Response
 import retrofit2.http.GET

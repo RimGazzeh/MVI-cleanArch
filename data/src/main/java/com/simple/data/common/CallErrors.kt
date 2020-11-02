@@ -1,4 +1,4 @@
-package com.simple.data
+package com.simple.data.common
 
 
 /**

@@ -1,4 +1,4 @@
 include ':domain'
 include ':data'
-include ':app'
+include ':presentation'
 rootProject.name = "MVI-CleanArch"

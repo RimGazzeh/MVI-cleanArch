@@ -1,7 +1,7 @@
 package com.simple.data.managers
 
-import com.simple.data.ApiService
-import com.simple.data.CallErrors
+import com.simple.data.services.ApiService
+import com.simple.data.common.CallErrors
 import com.simple.domain.dto.toModel
 import com.simple.domain.entities.Persona
 import kotlinx.coroutines.flow.Flow

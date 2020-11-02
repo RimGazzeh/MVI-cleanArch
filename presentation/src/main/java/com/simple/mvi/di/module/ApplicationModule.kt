@@ -1,7 +1,7 @@
 package com.simple.mvi.di.module
 
 import android.content.Context
-import com.simple.data.ApiService
+import com.simple.data.services.ApiService
 import com.simple.data.managers.CharactersManager
 import com.simple.data.managers.CharactersManagerImpl
 import com.simple.mvi.MVIApplication
