@@ -27,7 +27,7 @@ fun CallErrors.getMessage(context: Context): String {
     return when (this) {
         is CallErrors.ErrorEmptyData -> context.getString(R.string.error_empty_data)
         is CallErrors.ErrorServer -> context.getString(R.string.error_server_error)
-        is CallErrors.ErrorException -> if (throwable.message != null) throwable.message!! else context.getString(
+        is CallErrors.ErrorException ->  context.getString(
             R.string.error_exception
         )
     }
