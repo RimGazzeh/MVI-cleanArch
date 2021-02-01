@@ -15,7 +15,7 @@ Used Libs
 * [Coroutines](https://developer.android.com/kotlin/coroutines) 
 * [Coroutines-flow](https://kotlinlang.org/docs/reference/coroutines/flow.html) 
 * [Retrofit2](https://square.github.io/retrofit/) 
-* [steto](http://facebook.github.io/stetho/) 
+* [stetho](http://facebook.github.io/stetho/)
 * [coil](https://coil-kt.github.io/coil/) 
 
 Screenshot
