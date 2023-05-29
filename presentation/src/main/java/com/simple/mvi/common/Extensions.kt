@@ -31,5 +31,4 @@ fun CallErrors.getMessage(context: Context): String {
             R.string.error_exception
         )
     }
-
 }

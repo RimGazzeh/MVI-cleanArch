@@ -1,12 +1,3 @@
-/*
- * *
- *  * Created by Ahlem Jarrar on 1/21/20 11:59 AM
- *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/15/20 9:06 AM
- *
- *
- */
-
 package com.simple.mvi.di.viewmodels
 
 import androidx.lifecycle.ViewModel

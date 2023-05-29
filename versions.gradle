@@ -1,0 +1,63 @@
+ext.buildConfig = [
+        'compileSdk': 33,
+        'minSdk'    : 26,
+        'targetSdk' : 33,
+        'version'   : [
+                'code': 1,
+                'name': "1.0"
+        ],
+        'appId'        : 'com.simple.mvi',
+        'dataId'        : 'com.simple.data'
+]
+
+ext.versions = [
+        'gradle'               : '4.0.1',
+        'appcompat'            : '1.6.1',
+        'recyclerview'         : '1.3.0',
+        'cardview'             : '1.0.0',
+        'constraintlayout'     : '2.1.4',
+        'core_ktx'             : '1.10.1',
+        'kotlin'               : '1.4.0',
+        'kotlinCoroutines'     : '1.7.1',
+        'lifecycle'            : '2.6.1',
+        'dagger'               : '2.46.1',
+        'retrofit'             : '2.9.0',
+        'stetho'               : '1.6.0',
+        'kotlinx_serialization': '1.5.1',
+        'coil'                 : '2.4.0',
+]
+ext.deps = [
+        'gradle'            : "com.android.tools.build:gradle:${versions.gradle}",
+        'androidx'          : [
+                appcompat       : "androidx.appcompat:appcompat:${versions.appcompat}",
+                cardview        : "androidx.cardview:cardview:${versions.cardview}",
+                constraintlayout: "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
+                core_ktx        : "androidx.core:core-ktx:${versions.core_ktx}",
+                recyclerview    : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
+                viewModel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
+                liveData        : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}",
+
+        ],
+        'jetbrains'         : [
+                stdlib               : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+                coroutines_core      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}",
+                coroutines_android   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}",
+                kotlinx_serialization: "org.jetbrains.kotlinx:kotlinx-serialization-core:${versions.kotlinx_serialization}",
+        ],
+        'dagger'            : [
+                common  : "com.google.dagger:dagger:${versions.dagger}",
+                compiler: "com.google.dagger:dagger-compiler:${versions.dagger}",
+        ],
+        'squareup'          : [
+                retrofit      : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                converter_gson: "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+        ],
+        'stetho'            : "com.facebook.stetho:stetho-okhttp3:${versions.stetho}",
+        'coil'              : "io.coil-kt:coil:${versions.coil}",
+        'material_component': "com.google.android.material:material:${versions.appcompat}"
+]
+
+ext.appModules = [
+        'data'  : ":data",
+        'domain': ":domain"
+]

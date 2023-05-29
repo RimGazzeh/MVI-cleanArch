@@ -2,26 +2,27 @@ package com.simple.mvi.features.home.ui
 
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.simple.mvi.R
 import com.simple.mvi.common.BaseActivity
 import com.simple.mvi.common.getMessage
 import com.simple.mvi.common.runIfTrue
+import com.simple.mvi.databinding.ActivityMainBinding
 import com.simple.mvi.features.home.HomeViewModel
 import com.simple.mvi.features.home.HomeAction
 import com.simple.mvi.features.home.HomeIntent
 import com.simple.mvi.features.home.HomeState
-import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity :
     BaseActivity<HomeIntent, HomeAction, HomeState, HomeViewModel>(HomeViewModel::class.java) {
 
     private val mAdapter = CharactersAdapter()
-    override fun getLayoutResId(): Int {
-        return R.layout.activity_main
-    }
+
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun initUI() {
-        homeListCharacters.adapter = mAdapter
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.homeListCharacters.adapter = mAdapter
     }
 
     override fun initDATA() {
@@ -29,12 +30,12 @@ class HomeActivity :
     }
 
     override fun initEVENT() {
-        homeSearchImage.setOnClickListener {
-            homeSearchText.text.isNullOrBlank().not().runIfTrue {
-                dispatchIntent(HomeIntent.SearchCharacter(homeSearchText.text.toString()))
+        binding.homeSearchImage.setOnClickListener {
+            binding.homeSearchText.text.isNullOrBlank().not().runIfTrue {
+                dispatchIntent(HomeIntent.SearchCharacter(binding.homeSearchText.text.toString()))
             }
         }
-        homeSearchText.doOnTextChanged { text, _, _, _ ->
+        binding.homeSearchText.doOnTextChanged { text, _, _, _ ->
             text.isNullOrBlank()
                 .and(mState is HomeState.ResultSearch)
                 .runIfTrue {
@@ -44,22 +45,31 @@ class HomeActivity :
     }
 
     override fun render(state: HomeState) {
-        homeProgress.isVisible = state is HomeState.Loading
-        homeMessage.isVisible = state is HomeState.Exception
-        homeListCharacters.isVisible =
+        binding.homeProgress.isVisible = state is HomeState.Loading
+        binding.homeMessage.isVisible = state is HomeState.Exception
+        binding.homeListCharacters.isVisible =
             state is HomeState.ResultSearch || state is HomeState.ResultAllPersona
 
         when (state) {
             is HomeState.ResultAllPersona -> {
                 mAdapter.updateList(state.data)
             }
+
             is HomeState.ResultSearch -> {
                 mAdapter.updateList(state.data)
                 // other logic ...
             }
+
             is HomeState.Exception -> {
-                homeMessage.text = state.callErrors.getMessage(this)
+                binding.homeMessage.text = state.callErrors.getMessage(this)
             }
+
+            else -> {}
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

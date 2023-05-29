@@ -1,10 +1,11 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 
 android {
+    namespace buildConfig.dataId
     compileSdkVersion buildConfig.compileSdk
-    buildToolsVersion buildConfig.tools
 
     defaultConfig {
         minSdkVersion buildConfig.minSdk
@@ -22,10 +23,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_19
+        targetCompatibility JavaVersion.VERSION_19
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_19.toString()
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     api project(appModules.domain)
     api deps.jetbrains.stdlib
     implementation deps.jetbrains.kotlinx_serialization
@@ -34,8 +46,7 @@ dependencies {
     api deps.squareup.retrofit
     api deps.jetbrains.coroutines_core
     api deps.jetbrains.coroutines_android
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

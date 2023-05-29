@@ -2,6 +2,7 @@ package com.simple.data.common
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retryWhen
 import java.io.IOException
@@ -17,7 +18,8 @@ fun <T : Any> Flow<Result<T>>.applyCommonSideEffects() =
                 false
             }
         }
-    }
-        .onStart {
+    }.onStart {
             emit(Result.Loading)
-        }
+    }.catch {
+        emit(Result.Error(CallErrors.ErrorException(it)))
+    }

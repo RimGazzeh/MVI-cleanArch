@@ -7,7 +7,6 @@ import com.simple.domain.entities.Persona
 import kotlinx.coroutines.flow.Flow
 import com.simple.data.common.Result
 import com.simple.data.common.applyCommonSideEffects
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
 /**
@@ -26,9 +25,7 @@ class CharactersManagerImpl(private val api: ApiService) : CharactersManager {
                 emit(Result.Error(CallErrors.ErrorServer))
             }
         }
-    }.applyCommonSideEffects().catch {
-        emit(Result.Error(CallErrors.ErrorException(it)))
-    }
+    }.applyCommonSideEffects()
 
     override fun searchCharacters(name: String): Flow<Result<List<Persona>>> = flow {
         api.searchCharacterByName(name).run {
@@ -42,9 +39,7 @@ class CharactersManagerImpl(private val api: ApiService) : CharactersManager {
                 emit(Result.Error(CallErrors.ErrorServer))
             }
         }
-    }.applyCommonSideEffects().catch {
-        emit(Result.Error(CallErrors.ErrorException(it)))
-    }
+    }.applyCommonSideEffects()
 }
 
 //TODO : GET RESPONSE GENERIC FUNCTION
